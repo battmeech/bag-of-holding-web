@@ -1,68 +1,18 @@
 {
-  "name": "bag-of-holding-web",
-  "version": "0.1.0",
-  "author": "Matt Beech, Dan Austin",
-  "repository": {
-    "url": "https://github.com/battmeech/bag-of-holding-web",
-    "type": "git"
-  },
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "test": "yarn test:type && yarn test:coverage",
-    "test:type": "tsc --noEmit",
-    "test:unit": "jest",
-    "test:coverage": "jest --coverage",
-    "lint": "eslint ./src --ext ts",
-    "prettify": "prettier --write src",
-    "schema:download": "apollo client:download-schema graphql-schema.json",
-    "schema:codegen": "apollo client:codegen --target=typescript --passthroughCustomScalars --customScalarsPrefix=GraphQL$ --tsFileExtension=ts",
-    "schema:download:dev": "apollo client:download-schema graphql-schema.json -v=dev",
-    "schema:codegen:dev": "apollo client:codegen --target=typescript --passthroughCustomScalars --customScalarsPrefix=GraphQL$ --tsFileExtension=ts -v=dev",
-    "storybook": "start-storybook -p 6006",
-    "build:storybook": "build-storybook"
-  },
-  "dependencies": {
-    "@apollo/client": "^3.3.21",
-    "@chakra-ui/icons": "^1.0.14",
-    "@chakra-ui/react": "^1.6.5",
-    "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.3.0",
-    "@fontsource/lexend": "^4.5.0",
-    "cross-fetch": "^3.1.4",
-    "framer-motion": "^4.1.17",
-    "graphql": "^15.5.1",
-    "next": "^11.0.0",
-    "next-pwa": "^5.2.23",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-icons": "^4.2.0"
-  },
+  "name": "bag-of-holding",
+  "private": true,
   "devDependencies": {
-    "@babel/core": "^7.14.6",
-    "@commitlint/cli": "^12.1.4",
-    "@commitlint/config-conventional": "^12.1.4",
-    "@jackfranklin/test-data-bot": "^1.3.0",
-    "@netlify/plugin-nextjs": "^3.6.3",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/react-hooks": "^7.0.1",
-    "@types/jest": "^26.0.24",
-    "@types/react": "^17.0.14",
-    "apollo": "^2.33.4",
-    "babel-jest": "^27.0.6",
-    "@storybook/addon-actions": "^6.3.4",
-    "@storybook/addon-essentials": "^6.3.4",
-    "@storybook/addon-links": "^6.3.4",
-    "@storybook/react": "^6.3.4",
-    "babel-loader": "^8.2.2",
-    "eslint": "^7.30.0",
-    "eslint-config-next": "^11.0.1",
-    "eslint-plugin-jest": "^24.3.6",
-    "husky": "^7.0.1",
-    "jest": "^27.0.6",
-    "prettier": "^2.3.2",
-    "typescript": "^4.3.5"
+    "lerna": "^4.0.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "yarn --cwd packages/app dev",
+    "test": "lerna run test",
+    "test:type": "lerna run test:type",
+    "test:unit": "lerna run test:unit",
+    "test:coverage": "lerna run test:coverage",
+    "lint": "lerna run lint"
   }
 }
