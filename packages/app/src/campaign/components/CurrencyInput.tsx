@@ -1,4 +1,4 @@
-import { AddIcon, MinusIcon } from "@chakra-ui/icons";
+import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import {
   Box,
   IconButton,
@@ -6,9 +6,9 @@ import {
   InputGroup,
   InputLeftAddon,
   InputRightAddon,
-} from "@chakra-ui/react";
-import React from "react";
-import { CurrencyDenomination, Coin } from "./Coin";
+} from '@chakra-ui/react';
+import React from 'react';
+import { CurrencyDenomination, Coin } from './Coin';
 
 type CurrencyInputProps = {
   denomination: CurrencyDenomination;

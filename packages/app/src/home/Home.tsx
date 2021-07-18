@@ -1,17 +1,17 @@
-import { useMutation } from "@apollo/client";
-import { Box } from "@chakra-ui/layout";
-import { Button, Input, SimpleGrid, Text } from "@chakra-ui/react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { FormEventHandler, useState } from "react";
+import { useMutation } from '@apollo/client';
+import { Box } from '@chakra-ui/layout';
+import { Button, Input, SimpleGrid, Text } from '@chakra-ui/react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { FormEventHandler, useState } from 'react';
 import {
   CreateCampaign,
   CreateCampaignGQL,
   CreateCampaignVariables,
-} from "./gql";
+} from './gql';
 
 const Home = () => {
-  const [campaignName, setCampaignName] = useState("");
+  const [campaignName, setCampaignName] = useState('');
   const { push } = useRouter();
 
   const [mutate, { loading }] = useMutation<
@@ -30,7 +30,7 @@ const Home = () => {
   };
 
   return (
-    <Box mb={8} width={{ base: "100%", md: "75%", lg: "50%" }}>
+    <Box mb={8} width={{ base: '100%', md: '75%', lg: '50%' }}>
       <Text mb={4}>create a new campaign</Text>
       <form onSubmit={onSubmit}>
         <Box mb={4}>

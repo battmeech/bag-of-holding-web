@@ -1,4 +1,4 @@
-import { useMutation } from "@apollo/client";
+import { useMutation } from '@apollo/client';
 import {
   AddItem,
   AddItemGQL,
@@ -7,8 +7,8 @@ import {
   EditItemGQL,
   EditItemVariables,
   EditItem_editItem_Campaign_items as ExistingItem,
-} from "campaign/gql";
-import { useEffect, useState } from "react";
+} from 'campaign/gql';
+import { useEffect, useState } from 'react';
 
 type Item = {
   name: string;
@@ -28,15 +28,15 @@ const validate = (
   key: keyof Item,
   value: string
 ) => {
-  if (key === "description") return errors;
-  if ((key === "name" && !value) || !value.trim()) errors.set(key, true);
-  else if (key === "name" && value) errors.delete(key);
+  if (key === 'description') return errors;
+  if ((key === 'name' && !value) || !value.trim()) errors.set(key, true);
+  else if (key === 'name' && value) errors.delete(key);
   return errors;
 };
 
 const initialiseValues = (startValues?: Item): Item => {
-  if (!startValues) return { name: "", description: undefined, quantity: "1" };
-  else return { description: undefined, quantity: "1", ...startValues };
+  if (!startValues) return { name: '', description: undefined, quantity: '1' };
+  else return { description: undefined, quantity: '1', ...startValues };
 };
 
 const useItem = (startingValues?: Item) => {
@@ -45,7 +45,7 @@ const useItem = (startingValues?: Item) => {
   const [isSaveEnabled, setIsSaveEnabled] = useState(false);
 
   const resetForm = () => {
-    setItem({ name: "", description: undefined, quantity: "1" });
+    setItem({ name: '', description: undefined, quantity: '1' });
     setErrors(new Map<keyof Item, boolean>());
     setIsSaveEnabled(false);
   };

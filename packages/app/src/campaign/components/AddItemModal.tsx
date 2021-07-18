@@ -4,11 +4,11 @@ import {
   ModalCloseButton,
   ModalFooter,
   ModalHeader,
-} from "@chakra-ui/react";
-import { useCreateItem } from "campaign/hooks";
-import React from "react";
-import { useModal } from "shared";
-import { ItemForm } from "./ItemForm";
+} from '@chakra-ui/react';
+import { useCreateItem } from 'campaign/hooks';
+import React from 'react';
+import { useModal } from 'shared';
+import { ItemForm } from './ItemForm';
 
 export function AddItemModal({ campaignId }: { campaignId: string }) {
   const { closeModal } = useModal();

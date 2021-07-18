@@ -1,21 +1,21 @@
-import * as GQL from "@apollo/client";
-import { MockedProvider } from "@apollo/client/testing";
-import { act, renderHook } from "@testing-library/react-hooks";
-import { waitFor } from "shared";
-import { useMoneyForm } from "../useMoneyForm";
+import * as GQL from '@apollo/client';
+import { MockedProvider } from '@apollo/client/testing';
+import { act, renderHook } from '@testing-library/react-hooks';
+import { waitFor } from 'shared';
+import { useMoneyForm } from '../useMoneyForm';
 
-describe("useMoneyForm", () => {
+describe('useMoneyForm', () => {
   const setupHook = ({ loading = false }: { loading?: boolean }) => {
     const mutateMock = jest.fn();
     const successCallbackMock = jest.fn();
     jest
-      .spyOn(GQL, "useMutation")
+      .spyOn(GQL, 'useMutation')
       .mockReturnValue([mutateMock, { loading } as any]);
 
     const rendered = renderHook(
       () =>
         useMoneyForm({
-          campaignId: "campaignId",
+          campaignId: 'campaignId',
           onSuccessCallback: successCallbackMock,
         }),
       {
@@ -29,7 +29,7 @@ describe("useMoneyForm", () => {
     jest.resetAllMocks();
   });
 
-  it("initialises form props with values", () => {
+  it('initialises form props with values', () => {
     const { result } = setupHook({});
 
     expect(result.current.formProps.values).toStrictEqual({
@@ -41,122 +41,122 @@ describe("useMoneyForm", () => {
     });
   });
 
-  it("initialises isSaveEnabled as false", () => {
+  it('initialises isSaveEnabled as false', () => {
     const { result } = setupHook({});
 
     expect(result.current.isSaveEnabled).toStrictEqual(false);
   });
 
-  it("updates the values when setValues is called number", async () => {
+  it('updates the values when setValues is called number', async () => {
     const { result } = setupHook({});
 
     act(() => {
-      result.current.formProps.setValues({ key: "copper", value: 2 });
+      result.current.formProps.setValues({ key: 'copper', value: 2 });
     });
 
     expect(result.current.formProps.values.copper).toStrictEqual(2);
   });
 
-  it("when NaN is passed in, does not update value", async () => {
+  it('when NaN is passed in, does not update value', async () => {
     const { result } = setupHook({});
 
     act(() => {
       result.current.formProps.setValues({
-        key: "copper",
-        value: Number("NaN"),
+        key: 'copper',
+        value: Number('NaN'),
       });
     });
 
     expect(result.current.formProps.values.copper).toStrictEqual(0);
   });
 
-  it("updates the values when setValues is called with a string", async () => {
+  it('updates the values when setValues is called with a string', async () => {
     const { result } = setupHook({});
 
     act(() => {
-      result.current.formProps.setValues({ key: "copper", value: "2" });
+      result.current.formProps.setValues({ key: 'copper', value: '2' });
     });
 
     expect(result.current.formProps.values.copper).toStrictEqual(2);
   });
 
-  it("does not update the value when an invalid value is passed in", async () => {
+  it('does not update the value when an invalid value is passed in', async () => {
     const { result } = setupHook({});
 
     act(() => {
-      result.current.formProps.setValues({ key: "copper", value: "invalid" });
+      result.current.formProps.setValues({ key: 'copper', value: 'invalid' });
     });
 
     expect(result.current.formProps.values.copper).toStrictEqual(0);
   });
 
-  it("does not update the value when a negative value is passed in", async () => {
+  it('does not update the value when a negative value is passed in', async () => {
     const { result } = setupHook({});
 
     act(() => {
-      result.current.formProps.setValues({ key: "copper", value: -1 });
+      result.current.formProps.setValues({ key: 'copper', value: -1 });
     });
 
     expect(result.current.formProps.values.copper).toStrictEqual(0);
   });
 
-  it("updates the value when nothing is passed in", async () => {
+  it('updates the value when nothing is passed in', async () => {
     const { result } = setupHook({});
 
     act(() => {
-      result.current.formProps.setValues({ key: "copper", value: "" });
+      result.current.formProps.setValues({ key: 'copper', value: '' });
     });
 
-    expect(result.current.formProps.values.copper).toStrictEqual("");
+    expect(result.current.formProps.values.copper).toStrictEqual('');
   });
 
-  it("has an error when nothing is passed in", async () => {
+  it('has an error when nothing is passed in', async () => {
     const { result } = setupHook({});
 
     act(() => {
-      result.current.formProps.setValues({ key: "copper", value: "" });
+      result.current.formProps.setValues({ key: 'copper', value: '' });
     });
 
-    expect(result.current.formProps.errors.get("copper")).toStrictEqual(true);
+    expect(result.current.formProps.errors.get('copper')).toStrictEqual(true);
   });
 
-  it("updates the value when nothing is passed in", async () => {
+  it('updates the value when nothing is passed in', async () => {
     const { result } = setupHook({});
 
     act(() => {
-      result.current.formProps.setValues({ key: "copper", value: "" });
+      result.current.formProps.setValues({ key: 'copper', value: '' });
     });
 
-    expect(result.current.formProps.values.copper).toStrictEqual("");
+    expect(result.current.formProps.values.copper).toStrictEqual('');
   });
 
-  it("is saved enabled is true when a valid number is entered into a field", async () => {
+  it('is saved enabled is true when a valid number is entered into a field', async () => {
     const { result } = setupHook({});
 
     act(() => {
-      result.current.formProps.setValues({ key: "copper", value: 2 });
+      result.current.formProps.setValues({ key: 'copper', value: 2 });
     });
 
     expect(result.current.isSaveEnabled).toStrictEqual(true);
   });
 
-  it("is saved enabled is false if any field is empty", async () => {
+  it('is saved enabled is false if any field is empty', async () => {
     const { result } = setupHook({});
 
     act(() => {
-      result.current.formProps.setValues({ key: "copper", value: 2 });
-      result.current.formProps.setValues({ key: "silver", value: "" });
+      result.current.formProps.setValues({ key: 'copper', value: 2 });
+      result.current.formProps.setValues({ key: 'silver', value: '' });
     });
 
     expect(result.current.isSaveEnabled).toStrictEqual(false);
   });
 
-  it("calling reset form resets the values to blank", async () => {
+  it('calling reset form resets the values to blank', async () => {
     const { result } = setupHook({});
 
     act(() => {
-      result.current.formProps.setValues({ key: "copper", value: 2 });
-      result.current.formProps.setValues({ key: "silver", value: "" });
+      result.current.formProps.setValues({ key: 'copper', value: 2 });
+      result.current.formProps.setValues({ key: 'silver', value: '' });
     });
 
     act(() => {
@@ -172,41 +172,41 @@ describe("useMoneyForm", () => {
     });
   });
 
-  it("returns loading as true when the GQL query is in progress", async () => {
+  it('returns loading as true when the GQL query is in progress', async () => {
     const { result } = setupHook({ loading: true });
 
     expect(result.current.loading).toStrictEqual(true);
   });
 
-  it("returns saveLoading as false when the GQL query is in progress", async () => {
+  it('returns saveLoading as false when the GQL query is in progress', async () => {
     const { result } = setupHook({ loading: false });
 
     expect(result.current.loading).toStrictEqual(false);
   });
 
-  it("calling save causes a GQL mutation", async () => {
+  it('calling save causes a GQL mutation', async () => {
     const { result, mutateMock } = setupHook({});
 
     act(() => {
-      result.current.formProps.setValues({ key: "copper", value: 2 });
-      result.current.formProps.setValues({ key: "silver", value: "" });
+      result.current.formProps.setValues({ key: 'copper', value: 2 });
+      result.current.formProps.setValues({ key: 'silver', value: '' });
     });
 
     act(() => {
-      result.current.modifyMoney("add");
+      result.current.modifyMoney('add');
     });
 
     await waitFor(() =>
       expect(mutateMock).toHaveBeenCalledWith({
         variables: {
-          id: "campaignId",
+          id: 'campaignId',
           input: {
             copper: 2,
             electrum: 0,
             gold: 0,
-            modification: "ADD",
+            modification: 'ADD',
             platinum: 0,
-            silver: "",
+            silver: '',
           },
         },
       })

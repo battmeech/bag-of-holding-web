@@ -1,8 +1,8 @@
 /* istanbul ignore file */
-import Document, { Head, Html, Main, NextScript } from "next/document";
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
-const APP_NAME = "bag-of-holding";
-const APP_DESCRIPTION = "A place to store all your items!";
+const APP_NAME = 'bag-of-holding';
+const APP_DESCRIPTION = 'A place to store all your items!';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: any) {

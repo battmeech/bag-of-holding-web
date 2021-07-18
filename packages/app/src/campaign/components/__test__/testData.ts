@@ -2,18 +2,18 @@
 import {
   FetchCampaign_fetchCampaign_Campaign_items as Item,
   FetchCampaign_fetchCampaign_Campaign as Campaign,
-} from "campaign/gql";
+} from 'campaign/gql';
 
 export const createItem = ({
-  name = "Test name",
-  description = "Test description",
+  name = 'Test name',
+  description = 'Test description',
 }: {
   name?: string;
   description?: string;
 }): Item => {
   return {
-    __typename: "Item",
-    id: "item-id",
+    __typename: 'Item',
+    id: 'item-id',
     name,
     description,
     quantity: 1,
@@ -21,14 +21,14 @@ export const createItem = ({
 };
 
 export const createCampaign = (): Campaign => ({
-  __typename: "Campaign",
-  id: "campaign-id",
+  __typename: 'Campaign',
+  id: 'campaign-id',
   items: [
     {
-      __typename: "Item",
-      id: "item-a",
-      description: "item description",
-      name: "item name",
+      __typename: 'Item',
+      id: 'item-a',
+      description: 'item description',
+      name: 'item name',
       quantity: 1,
     },
   ],
@@ -37,5 +37,5 @@ export const createCampaign = (): Campaign => ({
   electrum: 30,
   gold: 40,
   platinum: 45,
-  name: "This is my campaign",
+  name: 'This is my campaign',
 });

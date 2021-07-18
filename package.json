@@ -2,7 +2,11 @@
   "name": "bag-of-holding",
   "private": true,
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "husky": "^7.0.1",
+    "lerna": "^4.0.0",
+    "prettier": "^2.3.2"
   },
   "workspaces": [
     "packages/*"

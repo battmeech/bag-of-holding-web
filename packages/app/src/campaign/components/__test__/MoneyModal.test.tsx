@@ -1,13 +1,13 @@
-import * as GQL from "@apollo/client";
-import { Modal } from "@chakra-ui/react";
-import { MoneyModal } from "campaign/components/MoneyModal";
-import { EditItem_editItem_Campaign_items as Item } from "campaign/gql";
-import React from "react";
-import { fireEvent, render, waitFor } from "shared";
+import * as GQL from '@apollo/client';
+import { Modal } from '@chakra-ui/react';
+import { MoneyModal } from 'campaign/components/MoneyModal';
+import { EditItem_editItem_Campaign_items as Item } from 'campaign/gql';
+import React from 'react';
+import { fireEvent, render, waitFor } from 'shared';
 
-describe("MoneyModal", () => {
+describe('MoneyModal', () => {
   const setUpComponent = ({
-    campaignId = "campaign-id",
+    campaignId = 'campaign-id',
   }: {
     campaignId?: string;
     item?: Item;
@@ -20,52 +20,52 @@ describe("MoneyModal", () => {
     return rendered;
   };
 
-  it("renders a modal with close and save buttons", () => {
+  it('renders a modal with close and save buttons', () => {
     const { getByText } = setUpComponent({});
 
-    expect(getByText("add")).toBeInTheDocument();
-    expect(getByText("deduct")).toBeInTheDocument();
+    expect(getByText('add')).toBeInTheDocument();
+    expect(getByText('deduct')).toBeInTheDocument();
   });
 
-  it("buttons are disable on initial load", () => {
+  it('buttons are disable on initial load', () => {
     const { getByText } = setUpComponent({});
 
-    expect(getByText("add")).toBeDisabled();
-    expect(getByText("deduct")).toBeDisabled();
+    expect(getByText('add')).toBeDisabled();
+    expect(getByText('deduct')).toBeDisabled();
   });
 
-  it("setting a value enables the buttons", () => {
+  it('setting a value enables the buttons', () => {
     const { getByText, getByLabelText } = setUpComponent({});
 
-    const addButton = getByLabelText("add-copper");
+    const addButton = getByLabelText('add-copper');
     fireEvent.click(addButton);
 
-    expect(getByText("add")).not.toBeDisabled();
-    expect(getByText("deduct")).not.toBeDisabled();
+    expect(getByText('add')).not.toBeDisabled();
+    expect(getByText('deduct')).not.toBeDisabled();
   });
 
-  it("pressing add sends a gql request", async () => {
+  it('pressing add sends a gql request', async () => {
     const mutateMock = jest.fn(() => Promise.resolve({}));
     jest
-      .spyOn(GQL, "useMutation")
+      .spyOn(GQL, 'useMutation')
       .mockReturnValue([mutateMock, { loading: false } as any]);
     const { getByText, getByLabelText } = setUpComponent({});
 
-    const addButton = getByLabelText("add-copper");
+    const addButton = getByLabelText('add-copper');
     fireEvent.click(addButton);
 
-    const saveButton = getByText("add");
+    const saveButton = getByText('add');
     fireEvent.click(saveButton);
 
     await waitFor(() =>
       expect(mutateMock).toHaveBeenCalledWith({
         variables: {
-          id: "campaign-id",
+          id: 'campaign-id',
           input: {
             copper: 1,
             electrum: 0,
             gold: 0,
-            modification: "ADD",
+            modification: 'ADD',
             platinum: 0,
             silver: 0,
           },
@@ -74,28 +74,28 @@ describe("MoneyModal", () => {
     );
   });
 
-  it("pressing deduct sends a gql request", async () => {
+  it('pressing deduct sends a gql request', async () => {
     const mutateMock = jest.fn(() => Promise.resolve({}));
     jest
-      .spyOn(GQL, "useMutation")
+      .spyOn(GQL, 'useMutation')
       .mockReturnValue([mutateMock, { loading: false } as any]);
     const { getByText, getByLabelText } = setUpComponent({});
 
-    const addButton = getByLabelText("add-copper");
+    const addButton = getByLabelText('add-copper');
     fireEvent.click(addButton);
 
-    const saveButton = getByText("deduct");
+    const saveButton = getByText('deduct');
     fireEvent.click(saveButton);
 
     await waitFor(() =>
       expect(mutateMock).toHaveBeenCalledWith({
         variables: {
-          id: "campaign-id",
+          id: 'campaign-id',
           input: {
             copper: 1,
             electrum: 0,
             gold: 0,
-            modification: "DEDUCT",
+            modification: 'DEDUCT',
             platinum: 0,
             silver: 0,
           },

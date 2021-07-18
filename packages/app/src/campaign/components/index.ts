@@ -1,1 +1,1 @@
-export { default as CampaignContent } from "./CampaignContent";
+export { default as CampaignContent } from './CampaignContent';

@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const AddItemGQL = gql`
   mutation AddItem($id: ID!, $input: AddItemInput!) {

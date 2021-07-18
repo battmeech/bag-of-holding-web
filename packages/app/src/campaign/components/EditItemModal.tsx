@@ -4,12 +4,12 @@ import {
   ModalCloseButton,
   ModalFooter,
   ModalHeader,
-} from "@chakra-ui/react";
-import { EditItem_editItem_Campaign_items as ExistingItem } from "campaign/gql";
-import { useEditItem } from "campaign/hooks";
-import React from "react";
-import { useModal } from "shared";
-import { ItemForm } from "./ItemForm";
+} from '@chakra-ui/react';
+import { EditItem_editItem_Campaign_items as ExistingItem } from 'campaign/gql';
+import { useEditItem } from 'campaign/hooks';
+import React from 'react';
+import { useModal } from 'shared';
+import { ItemForm } from './ItemForm';
 
 export function EditItemModal({
   campaignId,

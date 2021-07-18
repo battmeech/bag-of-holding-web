@@ -1,11 +1,11 @@
-import { useMutation } from "@apollo/client";
+import { useMutation } from '@apollo/client';
 import {
   ModifyMoney,
   ModifyMoneyGQL,
   ModifyMoneyVariables,
-} from "campaign/gql";
-import { useEffect, useState } from "react";
-import { MoneyModification } from "../../../__generated__/globalTypes";
+} from 'campaign/gql';
+import { useEffect, useState } from 'react';
+import { MoneyModification } from '../../../__generated__/globalTypes';
 
 type Values = {
   platinum: number;
@@ -15,7 +15,7 @@ type Values = {
   copper: number;
 };
 
-type Modification = "add" | "deduct";
+type Modification = 'add' | 'deduct';
 
 export type FormProps = {
   errors: Map<keyof Values, boolean>;
@@ -29,8 +29,8 @@ const validate = (
   key: keyof Values,
   value: number | string
 ) => {
-  if (typeof value === "string") {
-    if (value === "") {
+  if (typeof value === 'string') {
+    if (value === '') {
       errors.set(key, true);
     } else {
       errors.delete(key);
@@ -72,7 +72,7 @@ export const useMoneyForm = ({
     const newValue: Record<string, any> = {};
     const numValue = Number(value);
 
-    if (value === "") newValue[key] = "";
+    if (value === '') newValue[key] = '';
     else if (!isNaN(numValue) && value >= 0) newValue[key] = numValue;
     else if (isNaN(numValue)) return;
     setMoney((currentState) => ({

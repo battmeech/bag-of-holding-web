@@ -1,7 +1,7 @@
-import { CurrencyInput } from "campaign/components/CurrencyInput";
-import { fireEvent, render } from "shared";
+import { CurrencyInput } from 'campaign/components/CurrencyInput';
+import { fireEvent, render } from 'shared';
 
-describe("CurrentInput", () => {
+describe('CurrentInput', () => {
   const setUpComponent = ({
     value = 2,
     error = false,
@@ -21,39 +21,39 @@ describe("CurrentInput", () => {
     return { ...rendered, onChangeMock };
   };
 
-  it("displays the correct value", () => {
+  it('displays the correct value', () => {
     const { getByPlaceholderText } = setUpComponent({});
 
-    const input = getByPlaceholderText("copper") as HTMLInputElement;
+    const input = getByPlaceholderText('copper') as HTMLInputElement;
 
-    expect(input.value).toStrictEqual("2");
+    expect(input.value).toStrictEqual('2');
   });
 
-  describe("plus button", () => {
-    it("clicking the + button adds a currency", () => {
+  describe('plus button', () => {
+    it('clicking the + button adds a currency', () => {
       const { getByLabelText, onChangeMock } = setUpComponent({});
 
-      const addButton = getByLabelText("add-copper");
+      const addButton = getByLabelText('add-copper');
 
       fireEvent.click(addButton);
 
       expect(onChangeMock).toHaveBeenCalledWith(3);
     });
 
-    it("shift clicking the + button adds 10 currency", () => {
+    it('shift clicking the + button adds 10 currency', () => {
       const { getByLabelText, onChangeMock } = setUpComponent({});
 
-      const addButton = getByLabelText("add-copper");
+      const addButton = getByLabelText('add-copper');
 
       fireEvent.click(addButton, { shiftKey: true });
 
       expect(onChangeMock).toHaveBeenCalledWith(12);
     });
 
-    it("alt clicking the + button adds 100 currency", () => {
+    it('alt clicking the + button adds 100 currency', () => {
       const { getByLabelText, onChangeMock } = setUpComponent({});
 
-      const addButton = getByLabelText("add-copper");
+      const addButton = getByLabelText('add-copper');
 
       fireEvent.click(addButton, { altKey: true });
 
@@ -61,41 +61,41 @@ describe("CurrentInput", () => {
     });
   });
 
-  describe("deduct button", () => {
-    it("clicking the - button subtracts a currency", () => {
+  describe('deduct button', () => {
+    it('clicking the - button subtracts a currency', () => {
       const { getByLabelText, onChangeMock } = setUpComponent({});
 
-      const deductButton = getByLabelText("deduct-copper");
+      const deductButton = getByLabelText('deduct-copper');
 
       fireEvent.click(deductButton);
 
       expect(onChangeMock).toHaveBeenCalledWith(1);
     });
 
-    it("shift clicking the - button subtracts 10 currency", () => {
+    it('shift clicking the - button subtracts 10 currency', () => {
       const { getByLabelText, onChangeMock } = setUpComponent({ value: 100 });
 
-      const deductButton = getByLabelText("deduct-copper");
+      const deductButton = getByLabelText('deduct-copper');
 
       fireEvent.click(deductButton, { shiftKey: true });
 
       expect(onChangeMock).toHaveBeenCalledWith(90);
     });
 
-    it("alt clicking the - button subtracts 100 currency", () => {
+    it('alt clicking the - button subtracts 100 currency', () => {
       const { getByLabelText, onChangeMock } = setUpComponent({ value: 1000 });
 
-      const deductButton = getByLabelText("deduct-copper");
+      const deductButton = getByLabelText('deduct-copper');
 
       fireEvent.click(deductButton, { altKey: true });
 
       expect(onChangeMock).toHaveBeenCalledWith(900);
     });
 
-    it("the value will not be below 0 when alt clicking when value is 50", () => {
+    it('the value will not be below 0 when alt clicking when value is 50', () => {
       const { getByLabelText, onChangeMock } = setUpComponent({ value: 50 });
 
-      const deductButton = getByLabelText("deduct-copper");
+      const deductButton = getByLabelText('deduct-copper');
 
       fireEvent.click(deductButton, { altKey: true });
 
@@ -103,15 +103,15 @@ describe("CurrentInput", () => {
     });
   });
 
-  it("will take the value a user types in", () => {
+  it('will take the value a user types in', () => {
     const { getByPlaceholderText, onChangeMock } = setUpComponent({
       value: 50,
     });
 
-    const input = getByPlaceholderText("copper");
+    const input = getByPlaceholderText('copper');
 
-    fireEvent.change(input, { target: { value: "2" } });
+    fireEvent.change(input, { target: { value: '2' } });
 
-    expect(onChangeMock).toHaveBeenCalledWith("2");
+    expect(onChangeMock).toHaveBeenCalledWith('2');
   });
 });

@@ -1,12 +1,12 @@
-import * as GQL from "@apollo/client";
-import { Modal } from "@chakra-ui/react";
-import { AddItemModal } from "campaign/components/AddItemModal";
-import React from "react";
-import { fireEvent, render, waitFor } from "shared";
+import * as GQL from '@apollo/client';
+import { Modal } from '@chakra-ui/react';
+import { AddItemModal } from 'campaign/components/AddItemModal';
+import React from 'react';
+import { fireEvent, render, waitFor } from 'shared';
 
-describe("AddItemModal", () => {
+describe('AddItemModal', () => {
   const setUpComponent = ({
-    campaignId = "campaign-id",
+    campaignId = 'campaign-id',
   }: {
     campaignId?: string;
   }) => {
@@ -18,49 +18,49 @@ describe("AddItemModal", () => {
     return rendered;
   };
 
-  it("Renders a modal with close and save buttons", () => {
+  it('Renders a modal with close and save buttons', () => {
     const { getByText } = setUpComponent({});
 
-    expect(getByText("close")).toBeInTheDocument();
-    expect(getByText("save item")).toBeInTheDocument();
+    expect(getByText('close')).toBeInTheDocument();
+    expect(getByText('save item')).toBeInTheDocument();
   });
 
-  it("save is disabled when no name is entered", () => {
+  it('save is disabled when no name is entered', () => {
     const { getByText } = setUpComponent({});
 
-    expect(getByText("save item")).toBeDisabled();
+    expect(getByText('save item')).toBeDisabled();
   });
 
-  it("entering a name enables the save button", () => {
+  it('entering a name enables the save button', () => {
     const { getByText, getByPlaceholderText } = setUpComponent({});
 
-    const input = getByPlaceholderText("item name");
+    const input = getByPlaceholderText('item name');
 
-    fireEvent.change(input, { target: { value: "Test Item Name" } });
+    fireEvent.change(input, { target: { value: 'Test Item Name' } });
 
-    expect(getByText("save item")).not.toBeDisabled();
+    expect(getByText('save item')).not.toBeDisabled();
   });
 
-  it("pressing save sends a gql request", async () => {
+  it('pressing save sends a gql request', async () => {
     const mutateMock = jest.fn(() => Promise.resolve({}));
     jest
-      .spyOn(GQL, "useMutation")
+      .spyOn(GQL, 'useMutation')
       .mockReturnValue([mutateMock, { loading: false } as any]);
     const { getByText, getByPlaceholderText } = setUpComponent({});
 
-    const input = getByPlaceholderText("item name");
-    fireEvent.change(input, { target: { value: "Test Item Name" } });
+    const input = getByPlaceholderText('item name');
+    fireEvent.change(input, { target: { value: 'Test Item Name' } });
 
-    const saveButton = getByText("save item");
+    const saveButton = getByText('save item');
     fireEvent.click(saveButton);
 
     await waitFor(() =>
       expect(mutateMock).toHaveBeenCalledWith({
         variables: {
-          id: "campaign-id",
+          id: 'campaign-id',
           input: {
             description: undefined,
-            name: "Test Item Name",
+            name: 'Test Item Name',
           },
         },
       })

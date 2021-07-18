@@ -1,11 +1,11 @@
 /* istanbul ignore file */
-import { ApolloProvider } from "@apollo/client";
-import { ChakraProvider } from "@chakra-ui/react";
-import "@fontsource/lexend/latin.css";
-import { AppProps } from "next/app";
-import Head from "next/head";
-import { client, Layout, ModalProvider } from "shared";
-import customTheme from "styles/customTheme";
+import { ApolloProvider } from '@apollo/client';
+import { ChakraProvider } from '@chakra-ui/react';
+import '@fontsource/lexend/latin.css';
+import { AppProps } from 'next/app';
+import Head from 'next/head';
+import { client, Layout, ModalProvider } from 'shared';
+import customTheme from 'styles/customTheme';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (

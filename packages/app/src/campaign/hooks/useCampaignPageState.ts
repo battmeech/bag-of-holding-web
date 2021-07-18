@@ -1,23 +1,23 @@
-import { QueryResult } from "@apollo/client";
+import { QueryResult } from '@apollo/client';
 import {
   FetchCampaign,
   FetchCampaign_fetchCampaign_Campaign as Campaign,
-} from "campaign/gql";
-import { useEffect, useState } from "react";
+} from 'campaign/gql';
+import { useEffect, useState } from 'react';
 
 export type CampaignPageState =
   | {
-      state: "loading";
+      state: 'loading';
     }
   | {
-      state: "error";
+      state: 'error';
       message: string;
     }
   | {
-      state: "not found";
+      state: 'not found';
     }
   | {
-      state: "loaded";
+      state: 'loaded';
       campaign: Campaign;
     };
 
@@ -26,15 +26,15 @@ export function useCampaignPageState({
   data,
   error,
 }: QueryResult<FetchCampaign>) {
-  const [state, setState] = useState<CampaignPageState>({ state: "loading" });
+  const [state, setState] = useState<CampaignPageState>({ state: 'loading' });
 
   useEffect(() => {
-    if (loading) setState({ state: "loading" });
-    if (error) setState({ state: "error", message: error.message });
-    if (data && data.fetchCampaign.__typename === "CampaignNotFound")
-      setState({ state: "not found" });
-    if (data && data.fetchCampaign.__typename === "Campaign")
-      setState({ state: "loaded", campaign: data.fetchCampaign });
+    if (loading) setState({ state: 'loading' });
+    if (error) setState({ state: 'error', message: error.message });
+    if (data && data.fetchCampaign.__typename === 'CampaignNotFound')
+      setState({ state: 'not found' });
+    if (data && data.fetchCampaign.__typename === 'Campaign')
+      setState({ state: 'loaded', campaign: data.fetchCampaign });
   }, [loading, data, error]);
 
   return state;

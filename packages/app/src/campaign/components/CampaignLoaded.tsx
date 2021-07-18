@@ -1,4 +1,4 @@
-import { AddIcon } from "@chakra-ui/icons";
+import { AddIcon } from '@chakra-ui/icons';
 import {
   Box,
   Button,
@@ -7,15 +7,15 @@ import {
   SimpleGrid,
   Text,
   Tooltip,
-} from "@chakra-ui/react";
-import { FetchCampaign_fetchCampaign_Campaign as Campaign } from "campaign/gql";
-import React from "react";
-import { useModal } from "shared";
-import { AddItemModal } from "./AddItemModal";
-import { Currency } from "./Currency";
-import { ItemCard } from "./ItemCard";
-import { MoneyModal } from "./MoneyModal";
-import { FaPiggyBank } from "react-icons/fa";
+} from '@chakra-ui/react';
+import { FetchCampaign_fetchCampaign_Campaign as Campaign } from 'campaign/gql';
+import React from 'react';
+import { useModal } from 'shared';
+import { AddItemModal } from './AddItemModal';
+import { Currency } from './Currency';
+import { ItemCard } from './ItemCard';
+import { MoneyModal } from './MoneyModal';
+import { FaPiggyBank } from 'react-icons/fa';
 
 export const CampaignLoaded = ({ campaign }: { campaign: Campaign }) => {
   const { openModal } = useModal();

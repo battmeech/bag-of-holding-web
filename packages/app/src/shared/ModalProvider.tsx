@@ -3,8 +3,8 @@ import {
   ModalContent,
   ModalOverlay,
   useDisclosure,
-} from "@chakra-ui/react";
-import { createContext, FC, ReactNode, useContext, useState } from "react";
+} from '@chakra-ui/react';
+import { createContext, FC, ReactNode, useContext, useState } from 'react';
 
 /* istanbul ignore next */
 const ModalContext = createContext({

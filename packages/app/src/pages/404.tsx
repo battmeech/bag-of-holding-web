@@ -1,11 +1,11 @@
 /* istanbul ignore file */
-import { Button } from "@chakra-ui/button";
-import { useColorMode } from "@chakra-ui/color-mode";
-import { Image } from "@chakra-ui/image";
-import { Box, Heading, Text, Link as ChakraLink } from "@chakra-ui/layout";
-import Link from "next/link";
+import { Button } from '@chakra-ui/button';
+import { useColorMode } from '@chakra-ui/color-mode';
+import { Image } from '@chakra-ui/image';
+import { Box, Heading, Text, Link as ChakraLink } from '@chakra-ui/layout';
+import Link from 'next/link';
 
-import { MotionBox } from "shared";
+import { MotionBox } from 'shared';
 
 const Page404 = () => {
   const { colorMode } = useColorMode();
@@ -14,8 +14,8 @@ const Page404 = () => {
     <>
       <MotionBox
         animate={{ y: 20 }}
-        transition={{ repeat: Infinity, duration: 2, repeatType: "reverse" }}
-        width={["100%", "70%", "60%", "60%"]}
+        transition={{ repeat: Infinity, duration: 2, repeatType: 'reverse' }}
+        width={['100%', '70%', '60%', '60%']}
         margin="0 auto"
       >
         <Image
@@ -36,7 +36,7 @@ const Page404 = () => {
           <Text>{"It's Okay!"}</Text>
           <Link href="/" passHref>
             <Button
-              backgroundColor={colorMode === "light" ? "gray.300" : "teal.500"}
+              backgroundColor={colorMode === 'light' ? 'gray.300' : 'teal.500'}
             >
               {"Let's Head Back"}
             </Button>

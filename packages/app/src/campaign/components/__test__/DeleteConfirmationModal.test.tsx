@@ -1,13 +1,13 @@
-import * as GQL from "@apollo/client";
-import { Modal } from "@chakra-ui/react";
-import React from "react";
-import { fireEvent, render, waitFor } from "shared";
-import { DeleteConfirmationModal } from "../DeleteConfirmationModal";
+import * as GQL from '@apollo/client';
+import { Modal } from '@chakra-ui/react';
+import React from 'react';
+import { fireEvent, render, waitFor } from 'shared';
+import { DeleteConfirmationModal } from '../DeleteConfirmationModal';
 
-describe("DeleteConfirmationModal", () => {
+describe('DeleteConfirmationModal', () => {
   const setUpComponent = ({
-    campaignId = "campaign-id",
-    itemId = "item-id",
+    campaignId = 'campaign-id',
+    itemId = 'item-id',
   }: {
     campaignId?: string;
     itemId?: string;
@@ -20,21 +20,21 @@ describe("DeleteConfirmationModal", () => {
     return rendered;
   };
 
-  it("renders a modal with close and save buttons", () => {
+  it('renders a modal with close and save buttons', () => {
     const { getByText } = setUpComponent({});
 
-    expect(getByText("nope")).toBeInTheDocument();
-    expect(getByText("yep")).toBeInTheDocument();
+    expect(getByText('nope')).toBeInTheDocument();
+    expect(getByText('yep')).toBeInTheDocument();
   });
 
-  it("pressing delete sends a gql mutation", async () => {
+  it('pressing delete sends a gql mutation', async () => {
     const mutateMock = jest.fn(() => Promise.resolve({}));
     jest
-      .spyOn(GQL, "useMutation")
+      .spyOn(GQL, 'useMutation')
       .mockReturnValue([mutateMock, { loading: false } as any]);
     const { getByText } = setUpComponent({});
 
-    const deleteButton = getByText("yep");
+    const deleteButton = getByText('yep');
     fireEvent.click(deleteButton);
 
     await waitFor(() => expect(mutateMock).toHaveBeenCalledWith());

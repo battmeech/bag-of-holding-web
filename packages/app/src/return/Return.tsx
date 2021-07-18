@@ -1,11 +1,11 @@
-import { Box } from "@chakra-ui/layout";
-import { Button, Input, SimpleGrid, Text } from "@chakra-ui/react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { FormEventHandler, useState } from "react";
+import { Box } from '@chakra-ui/layout';
+import { Button, Input, SimpleGrid, Text } from '@chakra-ui/react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { FormEventHandler, useState } from 'react';
 
 function Return() {
-  const [campaignCode, setCampaignCode] = useState("");
+  const [campaignCode, setCampaignCode] = useState('');
   const router = useRouter();
 
   /* istanbul ignore next */
@@ -15,7 +15,7 @@ function Return() {
   };
 
   return (
-    <Box mb={8} width={{ base: "100%", md: "75%", lg: "50%" }}>
+    <Box mb={8} width={{ base: '100%', md: '75%', lg: '50%' }}>
       <Text mb={4}>enter your campaign code</Text>
       <form onSubmit={onSubmit}>
         <Box mb={4}>

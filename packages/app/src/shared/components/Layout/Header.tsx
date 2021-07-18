@@ -1,7 +1,7 @@
-import { Box, Flex, Heading } from "@chakra-ui/layout";
+import { Box, Flex, Heading } from '@chakra-ui/layout';
 
-import { AccessibleLink } from "shared";
-import ThemeToggle from "./ThemeToggle";
+import { AccessibleLink } from 'shared';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   return (

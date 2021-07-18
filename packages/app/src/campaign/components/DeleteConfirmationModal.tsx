@@ -1,14 +1,14 @@
-import { useMutation } from "@apollo/client";
+import { useMutation } from '@apollo/client';
 import {
   Button,
   ModalBody,
   ModalCloseButton,
   ModalFooter,
   ModalHeader,
-} from "@chakra-ui/react";
-import { RemoveItem, RemoveItemGQL, RemoveItemVariables } from "campaign/gql";
-import React from "react";
-import { useModal } from "shared";
+} from '@chakra-ui/react';
+import { RemoveItem, RemoveItemGQL, RemoveItemVariables } from 'campaign/gql';
+import React from 'react';
+import { useModal } from 'shared';
 
 export function DeleteConfirmationModal({
   campaignId,

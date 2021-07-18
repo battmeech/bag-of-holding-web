@@ -4,11 +4,11 @@ import {
   ModalCloseButton,
   ModalFooter,
   ModalHeader,
-} from "@chakra-ui/react";
-import { useMoneyForm } from "campaign/hooks";
-import React from "react";
-import { useModal } from "shared";
-import { MoneyForm } from "./MoneyForm";
+} from '@chakra-ui/react';
+import { useMoneyForm } from 'campaign/hooks';
+import React from 'react';
+import { useModal } from 'shared';
+import { MoneyForm } from './MoneyForm';
 
 export function MoneyModal({ campaignId }: { campaignId: string }) {
   const { closeModal } = useModal();
@@ -31,14 +31,14 @@ export function MoneyModal({ campaignId }: { campaignId: string }) {
           disabled={!isSaveEnabled}
           variant="ghost"
           mr={3}
-          onClick={() => modifyMoney("deduct")}
+          onClick={() => modifyMoney('deduct')}
         >
           deduct
         </Button>
         <Button
           disabled={!isSaveEnabled}
           colorScheme="teal"
-          onClick={() => modifyMoney("add")}
+          onClick={() => modifyMoney('add')}
         >
           add
         </Button>

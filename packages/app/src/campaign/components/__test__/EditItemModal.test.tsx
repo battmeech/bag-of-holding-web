@@ -1,14 +1,14 @@
-import * as GQL from "@apollo/client";
-import { Modal } from "@chakra-ui/react";
-import React from "react";
-import { fireEvent, render, waitFor } from "shared";
-import { EditItemModal } from "campaign/components/EditItemModal";
-import { EditItem_editItem_Campaign_items as Item } from "campaign/gql";
-import { createItem } from "./testData";
+import * as GQL from '@apollo/client';
+import { Modal } from '@chakra-ui/react';
+import React from 'react';
+import { fireEvent, render, waitFor } from 'shared';
+import { EditItemModal } from 'campaign/components/EditItemModal';
+import { EditItem_editItem_Campaign_items as Item } from 'campaign/gql';
+import { createItem } from './testData';
 
-describe("EditItemModal", () => {
+describe('EditItemModal', () => {
   const setUpComponent = ({
-    campaignId = "campaign-id",
+    campaignId = 'campaign-id',
     item = createItem({}),
   }: {
     campaignId?: string;
@@ -22,60 +22,60 @@ describe("EditItemModal", () => {
     return rendered;
   };
 
-  it("renders a modal with close and save buttons", () => {
+  it('renders a modal with close and save buttons', () => {
     const { getByText } = setUpComponent({});
 
-    expect(getByText("close")).toBeInTheDocument();
-    expect(getByText("save item")).toBeInTheDocument();
+    expect(getByText('close')).toBeInTheDocument();
+    expect(getByText('save item')).toBeInTheDocument();
   });
 
-  it("save is enabled on modal load is entered", () => {
+  it('save is enabled on modal load is entered', () => {
     const { getByText } = setUpComponent({});
 
-    expect(getByText("save item")).not.toBeDisabled();
+    expect(getByText('save item')).not.toBeDisabled();
   });
 
-  it("save is enabled when no description is entered", () => {
+  it('save is enabled when no description is entered', () => {
     const { getByText, getByPlaceholderText } = setUpComponent({});
 
-    const input = getByPlaceholderText("item description");
+    const input = getByPlaceholderText('item description');
 
-    fireEvent.change(input, { target: { value: "" } });
+    fireEvent.change(input, { target: { value: '' } });
 
-    expect(getByText("save item")).not.toBeDisabled();
+    expect(getByText('save item')).not.toBeDisabled();
   });
 
-  it("save is disabled when no name is entered", () => {
+  it('save is disabled when no name is entered', () => {
     const { getByText, getByPlaceholderText } = setUpComponent({});
 
-    const input = getByPlaceholderText("item name");
+    const input = getByPlaceholderText('item name');
 
-    fireEvent.change(input, { target: { value: "" } });
+    fireEvent.change(input, { target: { value: '' } });
 
-    expect(getByText("save item")).toBeDisabled();
+    expect(getByText('save item')).toBeDisabled();
   });
 
-  it("pressing save sends a gql request", async () => {
+  it('pressing save sends a gql request', async () => {
     const mutateMock = jest.fn(() => Promise.resolve({}));
     jest
-      .spyOn(GQL, "useMutation")
+      .spyOn(GQL, 'useMutation')
       .mockReturnValue([mutateMock, { loading: false } as any]);
     const { getByText, getByPlaceholderText } = setUpComponent({});
 
-    const input = getByPlaceholderText("item name");
-    fireEvent.change(input, { target: { value: "Test Item Name" } });
+    const input = getByPlaceholderText('item name');
+    fireEvent.change(input, { target: { value: 'Test Item Name' } });
 
-    const saveButton = getByText("save item");
+    const saveButton = getByText('save item');
     fireEvent.click(saveButton);
 
     await waitFor(() =>
       expect(mutateMock).toHaveBeenCalledWith({
         variables: {
-          id: "campaign-id",
+          id: 'campaign-id',
           input: {
-            id: "item-id",
-            description: "Test description",
-            name: "Test Item Name",
+            id: 'item-id',
+            description: 'Test description',
+            name: 'Test Item Name',
           },
         },
       })
