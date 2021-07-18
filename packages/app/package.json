@@ -1,7 +1,8 @@
 {
-  "name": "bag-of-holding-web",
+  "name": "@bag-of-holding/app",
   "version": "0.1.0",
   "author": "Matt Beech, Dan Austin",
+  "private": true,
   "repository": {
     "url": "https://github.com/battmeech/bag-of-holding-web",
     "type": "git"
