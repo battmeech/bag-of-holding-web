@@ -1,0 +1,1 @@
+export { fetchCampaignQuery } from './fetchCampaign';

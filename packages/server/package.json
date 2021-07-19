@@ -1,0 +1,46 @@
+{
+  "name": "@bag-of-holding/gql",
+  "version": "1.0.0",
+  "author": "Matt Beech, Dan Austin",
+  "repository": {
+    "url": "https://github.com/battmeech/bag-of-holding-web",
+    "type": "git"
+  },
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "cross-env NODE_PATH=./src nodemon --config nodemon.json src/dev.ts",
+    "build": "tsc",
+    "test": "yarn test:type && yarn test:coverage",
+    "test:type": "tsc --noEmit",
+    "test:unit": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --coverage --watchAll",
+    "lint": "eslint ./src --ext ts",
+    "prettier": "prettier --write .",
+    "gen:types": "graphql-codegen --config codegen-server.yml"
+  },
+  "dependencies": {
+    "@saeris/apollo-server-vercel": "^0.4.0",
+    "apollo-server": "^2.25.2",
+    "apollo-server-micro": "^3.0.1",
+    "dotenv": "^10.0.0",
+    "graphql": "^15.5.1",
+    "mongoose": "^5.13.0",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "1.21.6",
+    "@graphql-codegen/typescript": "1.22.4",
+    "@graphql-codegen/typescript-operations": "1.18.3",
+    "@graphql-codegen/typescript-resolvers": "1.19.5",
+    "@types/node": "^15.12.5",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jest": "^24.3.6",
+    "nodemon": "^2.0.9",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.0.0"
+  }
+}
